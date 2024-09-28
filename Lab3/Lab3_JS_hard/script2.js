@@ -2,13 +2,19 @@ function compose() {
     let funcs = Array.from(arguments);
 
     return function(input) {
-        return funcs.reduceRight((accumulator, func) => func(accumulator), input);
+        return funcs.reduceRight((accumulator, currentFunc) => currentFunc(accumulator), input);
     };
 }
 
-const multiplyBy10 = x => x * 10;
-const add10 = x => x + 10;
-const power = x => Math.pow(x, 2);
+function multiplyBy10(number) {
+  return  number * 10;
+}
+function add10(number) {
+    return number + 10;
+}
+function power(number) {
+   return Math.pow(number, 2);
+}
 
 let number = +prompt("Enter the number: ");
 
